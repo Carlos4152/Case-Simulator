@@ -1,0 +1,18 @@
+
+
+.icon {
+  transition: all 0.3s ease-in-out;
+}
+
+.icon:hover i {
+  color:#54B4D3!important;
+}
+
+.form--section input, textarea {
+  outline: none;
+  text-indent: 5px;
+}
+
+.cases--container {
+  height: 220px;
+}
