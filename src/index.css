@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,400&display=swap');
 
+body {
+  font-family: 'Poppins', sans-serif;
+}
 
 .icon {
   transition: all 0.3s ease-in-out;
 }
 
 .icon:hover i {
-  color:#54B4D3!important;
+  color:#54B4D3;
 }
 
 .form--section input, textarea {
@@ -13,6 +17,22 @@
   text-indent: 5px;
 }
 
-.cases--container {
-  height: 220px;
+.side--bar--mobile {
+  left: -120%;
+  transition: all 0.7s ease-in-out;
+}
+
+.active {
+  transition: all 0.3s ease-in-out;
+  left: -1px;
+}
+
+.edit--content {
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

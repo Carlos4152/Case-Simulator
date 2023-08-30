@@ -1,82 +1,141 @@
 
-const SideBar = () => {
+import { Link } from 'react-router-dom';
 
+const SideBar = ({ onToggle, afterClick }) => {
+
+  const toggleMenu = onToggle == true ? "side--bar--mobile" : "active";
   return (
-    <section className="side--bar bg-dark col-sm-2 py-4 px-4">
-      <div className="close--section d-flex aling-items-center">
-        <i className="fa-solid fa-layer-group pe-4 fs-4 text-info"></i>
-        <p className="text-white fw-bold h5">Case Center</p>
-      </div>
+    <>
+      <section className={`bg-[black] text-white py-[40px] pl-[20px] col-span-2 hidden xl:block `}>
+        <div className="close--section flex items-center">
+          <i className="fa-solid fa-layer-group text-[1.3rem] text-[#54B4D3]"></i>
+          <p className="fw-bold pl-[8px] font-bold text-[1.3rem]">Case Center</p>
+        </div>
 
-      <div className="img--photo w-[100%] d-flex justify-content-center pt-3">
-        <img
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
-          className="rounded-circle object-fit-cover border border-3 border-info"
-          width="120"
-          height="120"
-        />
-      </div>
+        <div className="img--photo pt-[30px] pl-[30px]">
+          <img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+            className="rounded-full w-[100px] h-[100px] object-cover border-[3px] border-[#54B4D3]"
+          />
+          <p className='text-white pt-[10px]'>Rodrigo Perez</p>
+        </div>
 
-      <ul className="p-0 py-5">
-        <li className="font-semibold pt-[20px] icon">
-          <i className="pe-3 fa-solid fa-bars-progress text-white text-[1.2rem] pr-[12px]"></i>
-          <a href="#" className="text-decoration-none fw-semibold text-white">
-            Case Manangement
-          </a>
-        </li>
-        <li className="pt-4 icon">
-          <i className="pe-3 fa-brands fa-sourcetree text-[1.2rem] text-white pr-[12px]"></i>
-          <a href="#" className="text-decoration-none fw-semibold text-white">
-            Product Resources
-          </a>
-        </li>
-        <li className="pt-4 icon">
-          <i className="pe-3 fa-solid fa-database text-white text-[1.2rem] pr-[12px]"></i>
-          <a
-            href="#"
-            className="text-decoration-none fw-semibold text-white"
-          >
-            Case History
-          </a>
-        </li>
-        <li className="pt-4 icon">
-          <i className="pe-3 fa-solid fa-user text-white text-[1.2rem] pr-[12px]"></i>
-          <a
-            href="#"
-            className="text-decoration-none fw-semibold text-white"
-          >
-            My Account
-          </a>
-        </li>
-        <li className="pt-4 icon">
-          <i className="pe-3 fa-solid fa-gear text-white text-[1.2rem] pr-[12px]"></i>
-          <a
-            href="#"
-            className="text-decoration-none fw-semibold text-white"
-          >
-            Report Issue
-          </a>
-        </li>
-        <li className="pt-4 icon">
-          <i className="pe-3 fa-solid fa-inbox text-white"></i>
-          <a
-            href="#"
-            className="text-decoration-none fw-semibold text-white"
-          >
-            Follow up Email
-          </a>
-        </li>
-      </ul>
+        <ul className="pt-[30px]">
+          <li className="icon">
+            <i className="pr-[24px] fa-solid fa-bars-progress"></i>
+            <Link to="/form" className="font-semibold">
+              Case Form
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+            <i className="pr-[24px] fa-brands fa-sourcetree"></i>
+            <Link to="/product" className="font-semibold">
+              Product Resources
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+            <i className="pr-[24px] fa-solid fa-database"></i>
+            <Link
+              to="/case-history"
+              className="font-semibold"
+            >
+              Case History
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+            <i className="pr-[24px] fa-solid fa-user"></i>
+            <Link
+              to="/my-account"
+              className="font-semibold"
+            >
+              My Account
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+          <i className="pr-[24px] fa-solid fa-people-group"></i>
+            <Link
+              to="/issue"
+              className="font-semibold"
+            >
+              Team
+            </Link>
+          </li>
+        </ul>
 
-      <div className="sign--out">
-        <a href="#" className="text-decoration-none fw-semibold text-white">
-          <i className="fa-solid fa-arrow-right-from-bracket pe-3"></i>
-          Sign out
-        </a>
-      </div>
-    </section>
+        <div className="sign--out pt-[50px]">
+          <a href="#" className="font-semibold">
+            <i className="fa-solid fa-arrow-right-from-bracket pr-[20px] text-[red]"></i>
+            Sign out
+          </a>
+        </div>
+      </section>
+      
+      {/* Responsive mobile Side--bar */}
+      <section className={`${toggleMenu} bg-[black] text-white py-[30px] pl-[15px] fixed top-0 w-[240px] xl:hidden bottom-0`}>
+        <div className="close--section flex items-center">
+          <i className="fa-solid fa-layer-group text-[1.3rem] text-[#54B4D3]"></i>
+          <p className="fw-bold pl-[8px] font-bold text-[1.3rem]">Case Center</p>
+        </div>
+
+        <div className="img--photo pt-[30px] pl-[30px]">
+          <img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+            alt=""
+            className="rounded-full w-[100px] h-[100px] object-cover border-[3px] border-[#54B4D3]"
+          />
+          <p className='text-white pt-[10px]'>Rodrigo Perez</p>
+        </div>
+
+        <ul className="pt-[30px]">
+          <li className="icon">
+            <i className="pr-[24px] fa-solid fa-bars-progress"></i>
+            <Link to="/form" className="font-semibold" onClick={afterClick}>
+              Case Form
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+            <i className="pr-[24px] fa-brands fa-sourcetree"></i>
+            <Link to="/product" className="font-semibold" onClick={afterClick}>
+              Product Resources
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+            <i className="pr-[24px] fa-solid fa-database"></i>
+            <Link
+              to="/case-history"
+              className="font-semibold" onClick={afterClick}
+            >
+              Case History
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+            <i className="pr-[24px] fa-solid fa-user"></i>
+            <Link
+              to="/my-account"
+              className="font-semibold" onClick={afterClick}
+            >
+              My Account
+            </Link>
+          </li>
+          <li className="icon pt-[30px]">
+            <i className="pr-[24px] fa-solid fa-people-group"></i>
+            <Link
+              to="/issue"
+              className="font-semibold" onClick={afterClick}
+            >
+              Team
+            </Link>
+          </li>
+        </ul>
+
+        <div className="sign--out pt-[50px] ">
+          <a href="#" className="font-semibold">
+            <i className="fa-solid fa-arrow-right-from-bracket pr-[20px] text-[red]"></i>
+            Sign out
+          </a>
+        </div>
+      </section>
+    </>
   )
 }
-
 export default SideBar;

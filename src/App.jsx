@@ -1,74 +1,73 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 import SideBar from './components/SideBar'
-import Form from './components/From'
-import Cases from './components/Cases'
+import Form from './components/Form'
 import History from './components/Records'
+import BtnMenu from './components/BtnMenu'
+import Product from './components/Product'
+import MyAccount from './components/MyAccount'
+import Team from './components/Team'
+import Followup from './components/Followup'
 
 function App() {
-  // start Getting Case Details from Form Component
-  const [caseData, setCaseData] = useState([]);
-  const [caseCounts, setCaseCounts] = useState({ open: 0, pending: 0, solved: 0 });
-  
-  const upDateCase = (data) => {
-    setCaseData((prevData) => [...prevData, data]);
-    setCaseCounts((prevCounts) => ({
-      ...prevCounts,
-      [data]: prevCounts[data] + 1
-    }));
-  }
-  
+  // pushing new objects coming from From Component
   const [caseDetails, setCaseDetails] = useState([
     {
       id: 0,
-      name: "Carlos Ramirez",
+      customer: "Carlos Ramirez",
       subject: "report credit card",
       account: 430336584,
-      status: false,
-      description: "account was closed due to late payments"
+      details: "solved",
+      info: "account was closed due to late payments"
     },
     {
       id: 1,
-      name: "Armando Torrez",
+      customer: "Armando Torrez",
       subject: "report credit card",
       account: 430336584,
-      status: false,
-      description: "account was closed due to late payments"
-    },
-    {
-      id: 2,
-      name: "Rodrigo Perez",
-      subject: "report credit card",
-      account: 430336584,
-      status: false,
-      description: "account was closed due to late payments"
-    },
-    {
-      id: 3,
-      name: "Guillermo Prada",
-      subject: "report credit card",
-      account: 430336584,
-      status: false,
-      description: "account was closed due to late payments"
+      details: "pending",
+      info: "account was closed due to late payments"
     }
   ])
 
   const getFullFormData = (event) => {
-    console.log(event)
+    const num = Math.floor(Math.random() * 1000) + 1;
+    const receivedData = { id: num, ...event };
+
+    setCaseDetails([...caseDetails, receivedData])
   };
 
+  // Removing case from  Records Component
+  const removeCase = (objectId) => {
+    const updatedArray = caseDetails.filter(element => element.id != objectId);
+    setCaseDetails(updatedArray)
+  }
+
+  //Toggle bar menu
+  const [toggleMenu, setToggleMenu] = useState(false)
+  const toggleBarMenu = () => {
+    setToggleMenu(!toggleMenu);
+  }
+
   return (
-    <>
-      <div className="row m-0">
-        <SideBar />
-        <section className="content--section col-sm-10 p-5">
-          <Form onGetData={upDateCase} fullData={getFullFormData} />
-          <Cases caseCounts={caseCounts}/>
-          <History caseInfo={caseDetails}/>
+    <Router>
+      <div className="grid grid-cols-12 h-[100vh]">
+        <SideBar onToggle={toggleMenu} afterClick={toggleBarMenu}/>
+
+        <section className="content--section col-span-12 xl:col-span-10 px-[25px] py-[20px]">
+          <BtnMenu onToggle={toggleBarMenu}/>
+          <Routes>
+            <Route path='/form' element={<Form onGetData={getFullFormData} />} />
+            <Route path='/product' element={<Product />} />
+            <Route path='/case-history' element={<History caseInfo={caseDetails} onRemove={removeCase}/>} />
+            <Route path='/my-account' element={<MyAccount />} />
+            <Route path='/issue' element={<Team />} />
+          </Routes>
         </section>
       </div>
-    </>
+    </Router>
   )
 }
 
