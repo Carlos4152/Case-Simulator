@@ -9,7 +9,6 @@ import BtnMenu from './components/BtnMenu'
 import Product from './components/Product'
 import MyAccount from './components/MyAccount'
 import Team from './components/Team'
-import Followup from './components/Followup'
 
 function App() {
   // pushing new objects coming from From Component
@@ -30,7 +29,7 @@ function App() {
       details: "pending",
       info: "account was closed due to late payments"
     }
-  ])
+  ]);
 
   const getFullFormData = (event) => {
     const num = Math.floor(Math.random() * 1000) + 1;
@@ -55,7 +54,6 @@ function App() {
     <Router>
       <div className="grid grid-cols-12 h-[100vh]">
         <SideBar onToggle={toggleMenu} afterClick={toggleBarMenu}/>
-
         <section className="content--section col-span-12 xl:col-span-10 px-[25px] py-[20px]">
           <BtnMenu onToggle={toggleBarMenu}/>
           <Routes>
