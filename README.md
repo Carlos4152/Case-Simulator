@@ -1,5 +1,7 @@
 # [CASE SIMULATOR](https://carlos4152.github.io/Case-Simulator/)
 
+![case simulator](src/images/case-simulator.png)
+
 ## Description
 
 1. This simulator enables you to register cases related to customers' products or services.
