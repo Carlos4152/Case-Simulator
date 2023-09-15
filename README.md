@@ -1,6 +1,6 @@
 # [CASE SIMULATOR](https://carlos4152.github.io/Case-Simulator/)
 
-![case simulator](src/images/case-simulator.png)
+[![Case-simulator.png](https://i.postimg.cc/6qRY0bM6/Case-simulator.png)](https://postimg.cc/sGjYfmFb)
 
 ## Description
 
