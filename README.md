@@ -1,8 +1,16 @@
-# React + Vite
+# [CASE SIMULATOR](https://carlos4152.github.io/Case-Simulator/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+1. This simulator enables you to register cases related to customers' products or services.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. It keeps a history of all the cases that the CSR (Customer Service Representative) has registered.
+
+ 3. It allows you to delete and search for a specific case by the customer's name. 
+
+## Why did you decided to build this project?
+
+I've noticed that many people are building the same applications, and honestly, I've always wanted to make a difference. Additionally, I used to work as a Bilingual Customer Services Representative, and I always wanted to learn how to fix the platforms and systems I used at work. Plus, I've always wanted to create my own website! 😁
+
+## SKILL USED 
+**HTML | Tailwind | JavaScript | React**

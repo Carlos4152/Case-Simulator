@@ -62,6 +62,7 @@ function App() {
             <Route path='/case-history' element={<History caseInfo={caseDetails} onRemove={removeCase}/>} />
             <Route path='/my-account' element={<MyAccount />} />
             <Route path='/issue' element={<Team />} />
+            <Route path='*' element={<Form onGetData={getFullFormData} />} />
           </Routes>
         </section>
       </div>
